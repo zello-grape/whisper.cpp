@@ -4117,7 +4117,8 @@ int whisper_full_with_state(
         state->lang_id = lang_id;
         params.language = whisper_lang_str(lang_id);
 
-        log("%s: auto-detected language: %s (p = %f)\n", __func__, params.language, probs[whisper_lang_id(params.language)]);
+        log("%s: auto-detected language: %s (p = %f, max_tokens = %d)\n", __func__, params.language, probs[whisper_lang_id(params.language)], params.max_tokens);
+        fflush(stderr);
         if (params.detect_language) {
             return 0;
         }
